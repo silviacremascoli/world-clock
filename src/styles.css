@@ -1,4 +1,72 @@
-h1,
+body {
+  background: linear-gradient(
+    180.3deg,
+    rgb(214, 224, 255) 37.2%,
+    rgb(254, 168, 168) 137.3%
+  );
+  background-attachment: fixed;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+select {
+  display: block;
+  width: 100%;
+  padding: 6px;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
 footer {
   text-align: center;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.date {
+  opacity: 0.7;
+}
+
+.container {
+  max-width: 500px;
+  margin: 40px auto 20px auto;
+  background: #dbd8e350;
+  padding: 30px 30px 20px 30px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
+}
+
+.time {
+  font-size: 43px;
+}
+.time-reference {
+  font-size: 16px;
+  position: relative;
+  top: -5px;
+  padding-left: 2px;
+  font-weight: 500;
+}
+
+.city {
+  padding: 8px 10px;
+}
+
+.row {
+  margin: 0 4px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+.row:last-child {
+  border: none;
 }
