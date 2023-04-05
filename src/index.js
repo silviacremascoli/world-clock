@@ -75,7 +75,7 @@ function updateCityTime(event) {
     </div>
   </div>
   <div class="row" id="link">
-  <a href="/" id="back-link">Back to all cities</a>
+  <a href="index.html" id="back-link">Back to all cities →</a>
   </div>`;
   }
 }

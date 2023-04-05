@@ -78,9 +78,6 @@ footer {
   color: rgba(0, 0, 0, 0.7);
   text-decoration: none;
 }
-#back-link:hover {
-  text-decoration: underline;
-}
 
 #link {
   padding: 4px;
