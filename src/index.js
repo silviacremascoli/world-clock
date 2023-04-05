@@ -73,6 +73,9 @@ function updateCityTime(event) {
         <span class="time">${cityTime.format("hh:mm:ss")}</span>
         <small class="time-reference">${cityTime.format("A")}</small>
     </div>
+  </div>
+  <div class="row" id="link">
+  <a href="/" id="back-link">Back to all cities</a>
   </div>`;
   }
 }

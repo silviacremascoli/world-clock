@@ -72,3 +72,16 @@ footer {
 .row:last-child {
   border: none;
 }
+
+#back-link {
+  padding: 4px;
+  color: rgba(0, 0, 0, 0.7);
+  text-decoration: none;
+}
+#back-link:hover {
+  text-decoration: underline;
+}
+
+#link {
+  padding: 4px;
+}
