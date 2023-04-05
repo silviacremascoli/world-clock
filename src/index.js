@@ -1,6 +1,6 @@
 function updateTime() {
   let losAngelesDate = document.querySelector("#los-angeles-date");
-  losAngelesDate.innerHTML = moment
+  losAngelesDate.innerHTML = moment()
     .tz("America/Los_Angeles")
     .format("MMMM Mo YYYY");
 
@@ -15,6 +15,7 @@ function updateTime() {
   losAngelesTimeReference.innerHTML = moment
     .tz("America/Los_Angeles")
     .format("A");
+
   let sydneyDate = document.querySelector("#sydney-date");
   sydneyDate.innerHTML = moment.tz("Australia/Sydney").format("MMMM Mo YYYY");
 
