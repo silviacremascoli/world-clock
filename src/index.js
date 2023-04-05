@@ -1,47 +1,57 @@
 function updateTime() {
-  let losAngelesDate = document.querySelector("#los-angeles-date");
-  losAngelesDate.innerHTML = moment
-    .tz("America/Los_Angeles")
-    .format("MMMM Mo YYYY");
+  let losAngeles = document.querySelector("#los-angeles");
+  if (losAngeles.length) {
+    let losAngelesDate = document.querySelector(".date");
+    losAngelesDate.innerHTML = moment
+      .tz("America/Los_Angeles")
+      .format("MMMM Mo YYYY");
 
-  let losAngelesTime = document.querySelector("#los-angeles-time");
-  losAngelesTime.innerHTML = moment
-    .tz("America/Los_Angeles")
-    .format("hh:mm:ss");
+    let losAngelesTime = document.querySelector(".time");
+    losAngelesTime.innerHTML = moment
+      .tz("America/Los_Angeles")
+      .format("hh:mm:ss");
 
-  let losAngelesTimeReference = document.querySelector(
-    "#los-angeles-time-reference"
-  );
-  losAngelesTimeReference.innerHTML = moment
-    .tz("America/Los_Angeles")
-    .format("A");
+    let losAngelesTimeReference = document.querySelector(".time-reference");
+    losAngelesTimeReference.innerHTML = moment
+      .tz("America/Los_Angeles")
+      .format("A");
+  }
 
-  let fijiDate = document.querySelector("#fiji-date");
-  fijiDate.innerHTML = moment.tz("Pacific/Fiji").format("MMMM Mo YYYY");
+  let fiji = document.querySelector("#fiji");
+  if (fiji.length) {
+    let fijiDate = document.querySelector(".date");
+    fijiDate.innerHTML = moment.tz("Pacific/Fiji").format("MMMM Mo YYYY");
 
-  let fijiTime = document.querySelector("#fiji-time");
-  fijiTime.innerHTML = moment.tz("Pacific/Fiji").format("hh:mm:ss");
+    let fijiTime = document.querySelector(".time");
+    fijiTime.innerHTML = moment.tz("Pacific/Fiji").format("hh:mm:ss");
 
-  let fijiTimeReference = document.querySelector("#fiji-time-reference");
-  fijiTimeReference.innerHTML = moment.tz("Pacific/Fiji").format("A");
+    let fijiTimeReference = document.querySelector(".time-reference");
+    fijiTimeReference.innerHTML = moment.tz("Pacific/Fiji").format("A");
+  }
 
-  let bangkokDate = document.querySelector("#bangkok-date");
-  bangkokDate.innerHTML = moment.tz("Asia/Bangkok").format("MMMM Mo YYYY");
+  let bangkok = document.querySelector("#bangkok");
+  if (bangkok.length) {
+    let bangkokDate = document.querySelector(".date");
+    bangkokDate.innerHTML = moment.tz("Asia/Bangkok").format("MMMM Mo YYYY");
 
-  let bangkokTime = document.querySelector("#bangkok-time");
-  bangkokTime.innerHTML = moment.tz("Asia/Bangkok").format("hh:mm:ss");
+    let bangkokTime = document.querySelector(".time");
+    bangkokTime.innerHTML = moment.tz("Asia/Bangkok").format("hh:mm:ss");
 
-  let bangkokTimeReference = document.querySelector("#bangkok-time-reference");
-  bangkokTimeReference.innerHTML = moment.tz("Asia/Bangkok").format("A");
+    let bangkokTimeReference = document.querySelector(".time-reference");
+    bangkokTimeReference.innerHTML = moment.tz("Asia/Bangkok").format("A");
+  }
 
-  let romeDate = document.querySelector("#rome-date");
-  romeDate.innerHTML = moment.tz("Europe/Rome").format("MMMM Mo YYYY");
+  let rome = document.querySelector("#rome");
+  if (rome.length) {
+    let romeDate = document.querySelector("#rome-date");
+    romeDate.innerHTML = moment.tz("Europe/Rome").format("MMMM Mo YYYY");
 
-  let romeTime = document.querySelector("#rome-time");
-  romeTime.innerHTML = moment.tz("Europe/Rome").format("hh:mm:ss");
+    let romeTime = document.querySelector("#rome-time");
+    romeTime.innerHTML = moment.tz("Europe/Rome").format("hh:mm:ss");
 
-  let romeTimeReference = document.querySelector("#rome-time-reference");
-  romeTimeReference.innerHTML = moment.tz("Europe/Rome").format("A");
+    let romeTimeReference = document.querySelector("#rome-time-reference");
+    romeTimeReference.innerHTML = moment.tz("Europe/Rome").format("A");
+  }
 }
 
 function updateCityTime(event) {
@@ -67,7 +77,6 @@ function updateCityTime(event) {
   }
 }
 
-updateTime();
 setInterval(updateTime, 1000);
 
 let citySelect = document.querySelector("#city");
