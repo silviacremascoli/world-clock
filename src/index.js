@@ -16,14 +16,14 @@ function updateTime() {
     .tz("America/Los_Angeles")
     .format("A");
 
-  let sydneyDate = document.querySelector("#sydney-date");
-  sydneyDate.innerHTML = moment.tz("Australia/Sydney").format("MMMM Mo YYYY");
+  let fijiDate = document.querySelector("#fiji-date");
+  fijiDate.innerHTML = moment.tz("Pacific/Fiji").format("MMMM Mo YYYY");
 
-  let sydneyTime = document.querySelector("#sydney-time");
-  sydneyTime.innerHTML = moment.tz("Australia/Sydney").format("hh:mm:ss");
+  let fijiTime = document.querySelector("#fiji-time");
+  fijiTime.innerHTML = moment.tz("Pacific/Fiji").format("hh:mm:ss");
 
-  let sydneyTimeReference = document.querySelector("#sydney-time-reference");
-  sydneyTimeReference.innerHTML = moment.tz("Australia/Sydney").format("A");
+  let fijiTimeReference = document.querySelector("#fiji-time-reference");
+  fijiTimeReference.innerHTML = moment.tz("Pacific/Fiji").format("A");
 
   let bangkokDate = document.querySelector("#bangkok-date");
   bangkokDate.innerHTML = moment.tz("Asia/Bangkok").format("MMMM Mo YYYY");
