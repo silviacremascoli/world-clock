@@ -18,51 +18,62 @@
   <body>
     <div class="container">
       <h1>🌐  World Clock 🌐 </h1>
-      <select id="cities">
+      <select id="city">
         <option value="">Select a city...</option>
         <option value="">Current location 📍</option>
-        <option value="">Buenos Aires 🇦🇷 </option>
-        <option value="">Tokyo 🇯🇵 </option>
-        <option value="">Wellington 🇳🇿 </option>
+        <option value="America/Vancouver">Vancouver 🇨🇦 </option>
+        <option value="America/Buenos_Aires">Buenos Aires 🇦🇷 </option>
+        <option value="Atlantic/Reykjavik">Reykjavik 🇮🇸  </option>
+        <option value="Africa/Nairobi">Nairobi 🇰🇪  </option>
+        <option value="Asia/Dubai">Dubai 🇦🇪  </option>
+        <option value="Asia/Kathmandu">Kathmandu 🇳🇵   </option>
+        <option value="Asia/Singapore">Singapore 🇸🇬    </option>
+        <option value="Asia/Tokyo">Tokyo 🇯🇵 </option>
+        <option value="Pacific/Auckland">Auckland 🇳🇿 </option>
       </select>
-      <div class="row">
-        <div class="col-6 city">
-          <h2>Los Angeles 🇺🇸</h2>
-          <div class="date" id="los-angeles-date"></div>
+      <div id="cities">
+        <div class="row">
+          <div class="col-6 city">
+            <h2>Los Angeles 🇺🇸</h2>
+            <div class="date" id="los-angeles-date"></div>
+          </div>
+          <div class="col-6">
+            <span class="time" id="los-angeles-time"></span>
+            <small
+              class="time-reference"
+              id="los-angeles-time-reference"
+            ></small>
+          </div>
         </div>
-        <div class="col-6">
-          <span class="time" id="los-angeles-time"></span>
-          <small class="time-reference" id="los-angeles-time-reference"></small>
+        <div class="row">
+          <div class="col-6 city">
+            <h2>Rome 🇮🇹</h2>
+            <div class="date" id="rome-date"></div>
+          </div>
+          <div class="col-6">
+            <span class="time" id="rome-time"></span>
+            <small class="time-reference" id="rome-time-reference"></small>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-6 city">
-          <h2>Sydney 🇦🇺</h2>
-          <div class="date" id="sydney-date"></div>
+        <div class="row">
+          <div class="col-6 city">
+            <h2>Bangkok 🇹🇭 </h2>
+            <div class="date" id="bangkok-date"></div>
+          </div>
+          <div class="col-6">
+            <span class="time" id="bangkok-time"></span>
+            <small class="time-reference" id="bangkok-time-reference"></small>
+          </div>
         </div>
-        <div class="col-6">
-          <span class="time" id="sydney-time"></span>
-          <small class="time-reference" id="sydney-time-reference"></small>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-6 city">
-          <h2>Seoul 🇰🇷</h2>
-          <div class="date" id="seoul-date"></div>
-        </div>
-        <div class="col-6">
-          <span class="time" id="seoul-time"></span>
-          <small class="time-reference" id="seoul-time-reference"></small>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-6 city">
-          <h2>Rome 🇮🇹</h2>
-          <div class="date" id="rome-date"></div>
-        </div>
-        <div class="col-6">
-          <span class="time" id="rome-time"></span>
-          <small class="time-reference" id="rome-time-reference"></small>
+        <div class="row">
+          <div class="col-6 city">
+            <h2>Sydney 🇦🇺</h2>
+            <div class="date" id="sydney-date"></div>
+          </div>
+          <div class="col-6">
+            <span class="time" id="sydney-time"></span>
+            <small class="time-reference" id="sydney-time-reference"></small>
+          </div>
         </div>
       </div>
     </div>
