@@ -4,7 +4,7 @@ function updateTime() {
     let losAngelesDate = document.querySelector(".date");
     losAngelesDate.innerHTML = moment
       .tz("America/Los_Angeles")
-      .format("MMMM Mo YYYY");
+      .format("MMMM Do YYYY");
 
     let losAngelesTime = document.querySelector(".time");
     losAngelesTime.innerHTML = moment
@@ -20,7 +20,7 @@ function updateTime() {
   let fiji = document.querySelector("#fiji");
   if (fiji) {
     let fijiDate = document.querySelector(".date");
-    fijiDate.innerHTML = moment.tz("Pacific/Fiji").format("MMMM Mo YYYY");
+    fijiDate.innerHTML = moment.tz("Pacific/Fiji").format("MMMM Do YYYY");
 
     let fijiTime = document.querySelector(".time");
     fijiTime.innerHTML = moment.tz("Pacific/Fiji").format("hh:mm:ss");
@@ -32,7 +32,7 @@ function updateTime() {
   let bangkok = document.querySelector("#bangkok");
   if (bangkok) {
     let bangkokDate = document.querySelector(".date");
-    bangkokDate.innerHTML = moment.tz("Asia/Bangkok").format("MMMM Mo YYYY");
+    bangkokDate.innerHTML = moment.tz("Asia/Bangkok").format("MMMM Do YYYY");
 
     let bangkokTime = document.querySelector(".time");
     bangkokTime.innerHTML = moment.tz("Asia/Bangkok").format("hh:mm:ss");
@@ -44,7 +44,7 @@ function updateTime() {
   let rome = document.querySelector("#rome");
   if (rome) {
     let romeDate = document.querySelector(".date");
-    romeDate.innerHTML = moment.tz("Europe/Rome").format("MMMM Mo YYYY");
+    romeDate.innerHTML = moment.tz("Europe/Rome").format("MMMM Do YYYY");
 
     let romeTime = document.querySelector(".time");
     romeTime.innerHTML = moment.tz("Europe/Rome").format("hh:mm:ss");
@@ -67,7 +67,7 @@ function updateCityTime(event) {
   <div class="row">
     <div class="col-6 city">
         <h2>${cityName}</h2>
-        <div class="date">${cityTime.format("MMMM Mo YYYY")}</div>
+        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
     </div>
     <div class="col-6">
         <span class="time">${cityTime.format("hh:mm:ss")}</span>
@@ -82,7 +82,7 @@ function updateCityTime(event) {
 
 updateTime();
 setInterval(updateTime, 1000);
+setInterval(updateCityTime, 1000);
 
 let citySelect = document.querySelector("#city");
 citySelect.addEventListener("change", updateCityTime);
-setInterval(updateCityTime, 1000);
