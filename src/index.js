@@ -81,6 +81,9 @@ function updateCityTime(event) {
   <div class="row" id="link">
   <a href="index.html" id="back-link">Back to all cities →</a>
   </div>`;
+    setTimeout(() => {
+      updateCityTime(event);
+    }, 1000);
   }
 }
 
