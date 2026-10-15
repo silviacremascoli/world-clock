@@ -58,33 +58,38 @@ const updateTime = () => {
   }
 };
 
-function updateCityTime(event) {
-  if (event && event.target.value.length > 0) {
-    let cityTimeZone = event.target.value;
-    if (cityTimeZone === "current") {
-      cityTimeZone = moment.tz.guess();
-    }
-    const cityName = cityTimeZone.replace("_", " ").split("/")[1];
-    const cityTime = moment.tz(cityTimeZone);
-    const cities = document.querySelector("#cities");
+let selectedZone = "";
+
+function updateCityTime() {
+  if (!selectedZone) return;
+  const cityTimeZone =
+    selectedZone === "current" ? moment.tz.guess() : selectedZone;
+  const cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  const cityTime = moment.tz(cityTimeZone);
+  const cities = document.querySelector("#cities");
+
+  if (cities.dataset.zone !== selectedZone) {
+    cities.dataset.zone = selectedZone;
     cities.innerHTML = `
   <div class="row">
     <div class="col-6 city">
-        <h2>${cityName}</h2>
-        <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+        <h2></h2>
+        <div class="date"></div>
     </div>
     <div class="col-6">
-        <span class="time">${cityTime.format("hh:mm:ss")}</span>
-        <small class="time-reference">${cityTime.format("A")}</small>
+        <span class="time"></span>
+        <small class="time-reference"></small>
     </div>
   </div>
   <div class="row" id="link">
   <a href="index.html" id="back-link">Back to all cities →</a>
   </div>`;
-    setTimeout(() => {
-      updateCityTime(event);
-    }, 1000);
+    cities.querySelector("h2").textContent = cityName;
   }
+
+  cities.querySelector(".date").textContent = cityTime.format("MMMM Do YYYY");
+  cities.querySelector(".time").textContent = cityTime.format("hh:mm:ss");
+  cities.querySelector(".time-reference").textContent = cityTime.format("A");
 }
 
 updateTime();
@@ -92,4 +97,7 @@ setInterval(updateTime, 1000);
 setInterval(updateCityTime, 1000);
 
 const citySelect = document.getElementById("city");
-citySelect.addEventListener("change", updateCityTime);
+citySelect.addEventListener("change", (event) => {
+  selectedZone = event.target.value;
+  updateCityTime();
+});

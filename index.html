@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🕒 World Clock by Silvia Cremascoli 🕒</title>
-    <link rel="icon" href="/src/Portfolio logo.png" type="image/x-icon" />
+    <link rel="icon" href="src/portfolio-logo.png" type="image/png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
     <link
@@ -17,8 +17,9 @@
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>🌐  World Clock 🌐 </h1>
+    <main class="container">
+      <h1><span aria-hidden="true">🌐</span> World Clock <span aria-hidden="true">🌐</span></h1>
+      <label for="city" class="visually-hidden">Select a city</label>
       <select id="city">
         <option value="">Select a city...</option>
         <option value="current">Current location 📍</option>
@@ -45,7 +46,7 @@
         </div>
         <div class="row" id="rome">
           <div class="col-6 city">
-            <h2>Rome 🇮🇹</h2>
+            <h2>Rome <span aria-hidden="true">🇮🇹</span></h2>
             <div class="rome-date"></div>
           </div>
           <div class="col-6">
@@ -55,7 +56,7 @@
         </div>
         <div class="row" id="bangkok">
           <div class="col-6 city">
-            <h2>Bangkok 🇹🇭 </h2>
+            <h2>Bangkok <span aria-hidden="true">🇹🇭</span></h2>
             <div class="bangkok-date"></div>
           </div>
           <div class="col-6">
@@ -65,7 +66,7 @@
         </div>
         <div class="row" id="fiji">
           <div class="col-6 city">
-            <h2>Fiji 🇫🇯 </h2>
+            <h2>Fiji <span aria-hidden="true">🇫🇯</span></h2>
             <div class="fiji-date"></div>
           </div>
           <div class="col-6">
@@ -74,13 +75,16 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
     <footer>
       Coded by <strong>Silvia Cremascoli</strong> and open-sourced on
-      <a href="https://github.com/silviacremascoli/world-clock" target="_blank"
-        >GitHub</a
+      <a
+        href="https://github.com/silviacremascoli/world-clock"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GitHub<span class="visually-hidden"> (opens in a new tab)</span></a
       >
-      🚀
+      <span aria-hidden="true">🚀</span>
     </footer>
     <script src="src/index.js"></script>
   </body>

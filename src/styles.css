@@ -1,17 +1,19 @@
 body {
+  min-height: 100vh;
+  overflow-x: hidden;
   background: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
   background-attachment: fixed;
 }
 
 h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 2.5rem;
   margin-bottom: 30px;
 }
 
 h2 {
   margin: 0;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 select {
@@ -19,18 +21,19 @@ select {
   width: 100%;
   padding: 6px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem;
   margin-bottom: 20px;
 }
 
 footer {
   text-align: center;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.6);
+  padding: 0 16px 20px;
+  font-size: 0.9375rem;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 footer a {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.8);
   font-weight: bold;
 }
 
@@ -38,12 +41,18 @@ footer a:hover {
   text-decoration: none;
 }
 
+a:focus-visible,
+select:focus-visible {
+  outline: 3px solid #1a4d8f;
+  outline-offset: 2px;
+}
+
 .date {
-  opacity: 0.7;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .container {
-  max-width: 500px;
+  max-width: 600px;
   margin: 40px auto 20px auto;
   background: #dbd8e350;
   padding: 30px 30px 20px 30px;
@@ -52,13 +61,13 @@ footer a:hover {
 }
 
 .time {
-  font-size: 43px;
+  font-size: 2.6875rem;
   display: inline;
 }
 
 .time-reference {
   display: inline;
-  font-size: 16px;
+  font-size: 1rem;
   position: relative;
   top: -5px;
   padding-left: 2px;
@@ -69,7 +78,7 @@ footer a:hover {
 .rome-time,
 .fiji-time,
 .bangkok-time {
-  font-size: 43px;
+  font-size: 2.6875rem;
   display: inline;
 }
 
@@ -78,7 +87,7 @@ footer a:hover {
 .fiji-time-reference,
 .bangkok-time-reference {
   display: inline;
-  font-size: 16px;
+  font-size: 1rem;
   position: relative;
   top: -5px;
   padding-left: 2px;
@@ -100,10 +109,55 @@ footer a:hover {
   border: none;
 }
 
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .row > .col-6 {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+    max-width: 600px;
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 20px 20px 12px 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: 1.625rem;
+  }
+
+  .time,
+  .los-angeles-time,
+  .rome-time,
+  .fiji-time,
+  .bangkok-time {
+    font-size: 2.25rem;
+  }
+}
+
 #back-link {
   padding: 4px;
-  color: rgba(0, 0, 0, 0.7);
-  text-decoration: none;
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: underline;
 }
 
 #link {
