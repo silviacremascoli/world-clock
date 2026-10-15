@@ -18,16 +18,16 @@ h2 {
 
 select {
   display: block;
-  width: 100%;
+  width: 50%;
   padding: 6px;
   border-radius: 8px;
-  font-size: 1rem;
-  margin-bottom: 20px;
+  font-size: 1.15rem;
+  margin: 20px auto;
 }
 
 #format-toggle {
   display: block;
-  margin: 0 0 20px auto;
+  margin: 0 auto 20px auto;
   padding: 6px 12px;
   border: 2px solid rgba(0, 0, 0, 0.6);
   border-radius: 8px;
@@ -142,8 +142,8 @@ select:focus-visible {
 }
 
 @media (max-width: 600px) {
-  .row > .col-6:last-child {
-    text-align: left;
+  .row > .col-6, .row > .col-6:last-child {
+    text-align: center;
   }
 
   .row {
@@ -167,6 +167,15 @@ select:focus-visible {
   h1 {
     font-size: 2rem;
   }
+
+  select {
+    width: 75%;
+  }
+
+  #back-link {
+    display: block;
+    text-align: center;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -185,6 +194,7 @@ select:focus-visible {
 
 #back-link {
   padding: 4px;
+  margin-top: 12px;
   color: rgba(0, 0, 0, 0.85);
   text-decoration: underline;
 }
