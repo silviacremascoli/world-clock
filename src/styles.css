@@ -141,7 +141,31 @@ select:focus-visible {
   text-align: right;
 }
 
-@media (max-width: 600px) {
+#back-link {
+  padding: 4px;
+  margin-top: 12px;
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: underline;
+}
+
+#link {
+  padding: 4px;
+}
+
+/* mobile styles */
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: 1.625rem;
+  }
+
+  .time,
+  .los-angeles-time,
+  .rome-time,
+  .fiji-time,
+  .bangkok-time {
+    font-size: 2.25rem;
+  }
+
   .row > .col-6, .row > .col-6:last-child {
     text-align: center;
   }
@@ -176,29 +200,4 @@ select:focus-visible {
     display: block;
     text-align: center;
   }
-}
-
-@media (max-width: 575.98px) {
-  h1 {
-    font-size: 1.625rem;
-  }
-
-  .time,
-  .los-angeles-time,
-  .rome-time,
-  .fiji-time,
-  .bangkok-time {
-    font-size: 2.25rem;
-  }
-}
-
-#back-link {
-  padding: 4px;
-  margin-top: 12px;
-  color: rgba(0, 0, 0, 0.85);
-  text-decoration: underline;
-}
-
-#link {
-  padding: 4px;
 }
