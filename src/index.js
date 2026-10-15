@@ -1,61 +1,45 @@
+// define the main cities and their corresponding time zones
+const CITIES = {
+  "los-angeles": "America/Los_Angeles",
+  "rome": "Europe/Rome",
+  "bangkok": "Asia/Bangkok",
+  "fiji": "Pacific/Fiji",
+};
+
+// set the text content of an element and if applicable its datetime attribute
+const setText = (root, selector, value, datetime) => {
+  const el = root.querySelector(selector);
+  if (!el) return;
+  el.textContent = value;
+  if (datetime) el.setAttribute("datetime", datetime);
+};
+
+// check if the user has chosen a 12-hour or 24-hour format
+const stored = localStorage.getItem("hour12");
+let hour12 =
+  stored !== null
+    ? stored === "true"
+    : new Intl.DateTimeFormat(undefined, { hour: "numeric" }).resolvedOptions()
+        .hour12;
+
+// render the time for a specific city
+const renderClock = (root, prefix, now) => {
+  setText(root, `.${prefix}date`, now.format("MMMM Do YYYY"), now.format("YYYY-MM-DD"));
+  setText(
+    root,
+    `.${prefix}time`,
+    now.format(hour12 ? "hh:mm:ss" : "HH:mm:ss"),
+    now.format("HH:mm:ss")
+  );
+  setText(root, `.${prefix}time-reference`, hour12 ? now.format("A") : "");
+};
+
+// update the time for all listed cities
 const updateTime = () => {
-  const losAngeles = document.getElementById("los-angeles");
-  if (losAngeles) {
-    const losAngelesDate = document.querySelector(".los-angeles-date");
-    losAngelesDate.innerHTML = moment
-      .tz("America/Los_Angeles")
-      .format("MMMM Do YYYY");
-
-    const losAngelesTime = document.querySelector(".los-angeles-time");
-    losAngelesTime.innerHTML = moment
-      .tz("America/Los_Angeles")
-      .format("hh:mm:ss");
-
-    const losAngelesTimeReference = document.querySelector(
-      ".los-angeles-time-reference"
-    );
-    losAngelesTimeReference.innerHTML = moment
-      .tz("America/Los_Angeles")
-      .format("A");
-  }
-
-  const fiji = document.getElementById("fiji");
-  if (fiji) {
-    const fijiDate = document.querySelector(".fiji-date");
-    fijiDate.innerHTML = moment.tz("Pacific/Fiji").format("MMMM Do YYYY");
-
-    const fijiTime = document.querySelector(".fiji-time");
-    fijiTime.innerHTML = moment.tz("Pacific/Fiji").format("hh:mm:ss");
-
-    const fijiTimeReference = document.querySelector(".fiji-time-reference");
-    fijiTimeReference.innerHTML = moment.tz("Pacific/Fiji").format("A");
-  }
-
-  const bangkok = document.getElementById("bangkok");
-  if (bangkok) {
-    const bangkokDate = document.querySelector(".bangkok-date");
-    bangkokDate.innerHTML = moment.tz("Asia/Bangkok").format("MMMM Do YYYY");
-
-    const bangkokTime = document.querySelector(".bangkok-time");
-    bangkokTime.innerHTML = moment.tz("Asia/Bangkok").format("hh:mm:ss");
-
-    const bangkokTimeReference = document.querySelector(
-      ".bangkok-time-reference"
-    );
-    bangkokTimeReference.innerHTML = moment.tz("Asia/Bangkok").format("A");
-  }
-
-  const rome = document.getElementById("rome");
-  if (rome) {
-    const romeDate = document.querySelector(".rome-date");
-    romeDate.innerHTML = moment.tz("Europe/Rome").format("MMMM Do YYYY");
-
-    const romeTime = document.querySelector(".rome-time");
-    romeTime.innerHTML = moment.tz("Europe/Rome").format("hh:mm:ss");
-
-    const romeTimeReference = document.querySelector(".rome-time-reference");
-    romeTimeReference.innerHTML = moment.tz("Europe/Rome").format("A");
-  }
+  Object.entries(CITIES).forEach(([id, zone]) => {
+    const row = document.getElementById(id);
+    if (row) renderClock(row, `${id}-`, moment.tz(zone));
+  });
 };
 
 let selectedZone = "";
@@ -64,38 +48,59 @@ function updateCityTime() {
   if (!selectedZone) return;
   const cityTimeZone =
     selectedZone === "current" ? moment.tz.guess() : selectedZone;
-  const cityName = cityTimeZone.replace("_", " ").split("/")[1];
-  const cityTime = moment.tz(cityTimeZone);
   const cities = document.querySelector("#cities");
 
+  // if the selected city is different from the current one, update the content
   if (cities.dataset.zone !== selectedZone) {
     cities.dataset.zone = selectedZone;
     cities.innerHTML = `
-  <div class="row">
-    <div class="col-6 city">
-        <h2></h2>
-        <div class="date"></div>
-    </div>
-    <div class="col-6">
-        <span class="time"></span>
-        <small class="time-reference"></small>
-    </div>
-  </div>
-  <div class="row" id="link">
-  <a href="index.html" id="back-link">Back to all cities →</a>
-  </div>`;
-    cities.querySelector("h2").textContent = cityName;
+      <div class="row">
+        <div class="col-6 city">
+            <h2></h2>
+            <time class="date"></time>
+        </div>
+        <div class="col-6">
+            <time class="time"></time>
+            <small class="time-reference"></small>
+        </div>
+      </div>
+      <div class="row" id="link">
+      <a href="index.html" id="back-link">Back to all cities →</a>
+      </div>`;
+    cities.querySelector("h2").textContent = cityTimeZone
+      .replace("_", " ")
+      .split("/")[1];
   }
 
-  cities.querySelector(".date").textContent = cityTime.format("MMMM Do YYYY");
-  cities.querySelector(".time").textContent = cityTime.format("hh:mm:ss");
-  cities.querySelector(".time-reference").textContent = cityTime.format("A");
+  renderClock(cities, "", moment.tz(cityTimeZone));
 }
 
 updateTime();
+// update the time every second
 setInterval(updateTime, 1000);
 setInterval(updateCityTime, 1000);
 
+
+const formatToggle = document.getElementById("format-toggle");
+
+// update the text in the toggle button based on the current format
+const syncToggle = () => {
+  formatToggle.textContent = hour12
+    ? "Switch to 24-hour format"
+    : "Switch to 12-hour format";
+};
+syncToggle();
+
+// toggle between 12-hour and 24-hour formats when the button is clicked
+formatToggle.addEventListener("click", () => {
+  hour12 = !hour12;
+  localStorage.setItem("hour12", String(hour12));
+  syncToggle();
+  updateTime();
+  updateCityTime();
+});
+
+// handle the change event for the city select dropdown
 const citySelect = document.getElementById("city");
 citySelect.addEventListener("change", (event) => {
   selectedZone = event.target.value;
